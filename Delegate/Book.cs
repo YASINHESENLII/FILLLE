@@ -22,7 +22,7 @@ namespace Delegate
 
         public Library Library { get; set; }
 
-        public Book(string name, string authorName, int pageCount, double price/*,/* Library library*/)
+        public Book(string name, string authorName, int pageCount, double price)
         {
             //Library = library;
             Name = name;
@@ -30,7 +30,14 @@ namespace Delegate
             PageCount = pageCount;
             Price = price;
             Count++;
-            Code = name.Substring(0,1).ToUpper() + Count;
+            string[] words = this.Name.Split(' ');
+            Code = "";
+            foreach (string word in words)
+            {
+                Code += char.ToUpper(word[0]) + "-" + word.Length.ToString();
+            }
+
+       
         }
         public override string ToString()
         {
